@@ -12,7 +12,7 @@ export default io => {
 
   router.get('/', controller.index);
   router.get('/byUsername', controller.getByUsername);
-  router.get('/:id/recomended', controller.getRecomendedReview);
+  router.get('/:id/recomended', controller.getRecommendedReview);
   router.get('/:id', controller.get);
   router.post('/', controller.create(io));
   router.put('/:id', controller.update(io));

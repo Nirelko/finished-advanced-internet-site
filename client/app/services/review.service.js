@@ -1,7 +1,7 @@
 import angular from 'angular';
 
 angular.module('advanced.services')
-    .factory('Post', $resource => $resource('/api/posts/:id/:controller', {
+    .factory('Review', $resource => $resource('/api/reviews/:id/:controller', {
       id: '@_id'
     }, {
       update: {
@@ -9,11 +9,11 @@ angular.module('advanced.services')
       },
       byUsername: {
         method: 'GET',
-        url: 'api/posts/byUsername',
+        url: 'api/reviews/byUsername',
         isArray: true
       },
       recomended: {
         method: 'GET',
-        url: 'api/posts/:id/recomended'
+        url: 'api/reviews/:id/recomended'
       }
     }));

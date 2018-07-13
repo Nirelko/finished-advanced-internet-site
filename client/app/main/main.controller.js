@@ -1,7 +1,7 @@
 import angular from 'angular';
 import io from 'socket.io-client';
 
-import newPostDialog from './new-post';
+import newPostDialog from './new-review';
 
 const CONTROLLER = 'mainController';
 

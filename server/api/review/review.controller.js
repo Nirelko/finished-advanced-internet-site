@@ -17,7 +17,7 @@ export function get({ params: { id } }) {
     .then(empty);
 }
 
-export function getRecomendedReview({ params: { id } }) {
+export function getRecommendedReview({ params: { id } }) {
   return User.findById(id)
     .then(user => Review.find({})
       .then(result => {
@@ -63,7 +63,7 @@ export function update(io) {
       review.author = body.author;
       review.content = body.content;
       review.title = body.title;
-      review.difficulty = body.difficulty;
+      review.category = body.category;
 
       return review.save();
     })

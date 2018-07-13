@@ -2,21 +2,21 @@ import angular from 'angular';
 
 const CONTROLLER = 'newPost';
 
-angular.module('advanced.controllers').controller(CONTROLLER, ($scope, Post, $mdDialog, LoggedUser) => {
+angular.module('advanced.controllers').controller(CONTROLLER, ($scope, Review, $mdDialog, LoggedUser) => {
   const loggedUser = LoggedUser.get();
 
-  $scope.difficulties = [1, 2, 3];
-  $scope.post = {
+  $scope.categories = ['Electronics', 'Technology', 'Programming', 'Cars', 'Home'];
+  $scope.review = {
     content: '',
     title: '',
     author: loggedUser.userName,
-    difficulty: 1
+    category: ''
   };
 
   $scope.savePost = () => {
     $scope.post.date = new Date();
 
-    return Post.save($scope.post).$promise
+    return Review.save($scope.post).$promise
       .then($mdDialog.hide);
   };
 

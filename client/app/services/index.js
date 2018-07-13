@@ -6,7 +6,7 @@ const MODULE_NAME = 'advanced.services';
 angular.module(MODULE_NAME, [angularResource]);
 
 require('./user.service');
-require('./post.service');
+require('./review.service');
 require('./map.service');
 require('./logged-user.service');
 
