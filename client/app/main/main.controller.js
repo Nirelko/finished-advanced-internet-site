@@ -1,52 +1,52 @@
 import angular from 'angular';
 import io from 'socket.io-client';
 
-import newPostDialog from './new-review';
+import newReviewDialog from './new-review';
 
 const CONTROLLER = 'mainController';
 
-angular.module('advanced.controllers').controller(CONTROLLER, ($scope, Post, User, $mdDialog, LoggedUser) => {
+angular.module('advanced.controllers').controller(CONTROLLER, ($scope, Review, User, $mdDialog, LoggedUser) => {
   LoggedUser.ensureLogged();
 
   const logged = LoggedUser.get()._id;
 
   $scope.showUsers = false;
-  $scope.posts = Post.query();
+  $scope.reviews = Review.query();
   $scope.users = User.query();
-  $scope.postSearchTerm = '';
-  $scope.postFilterBy = '';
+  $scope.reviewSearchTerm = '';
+  $scope.reviewFilterBy = '';
   $scope.userSearchTerm = '';
   $scope.userFilterBy = '';
 
-  $scope.postFilterTypes = ['author', 'title', 'content'];
+  $scope.reviewFilterTypes = ['author', 'title', 'content'];
   $scope.userFilterTypes = ['firstname', 'lastname', 'userName'];
 
   const socket = io('http://localhost:8318/');
 
   socket.on('refresh', () => {
-    $scope.posts = Post.query();
+    $scope.reviews = Review.query();
   });
 
-  Post.recomended({
+  Review.recomended({
     id: logged
   }).$promise
     .then(result => {
-      $scope.recomendedPost = result;
+      $scope.recomendedReview = result;
     });
 
-  $scope.searchPost = () => {
+  $scope.searchReview = () => {
     $scope.showUsers = false;
 
-    const filter = $scope.postFilterBy;
-    let term = $scope.postSearchTerm;
+    const filter = $scope.reviewFilterBy;
+    let term = $scope.reviewSearchTerm;
 
     if (!filter) {
       term = '';
     }
 
-    return Post.query({ term, filter }).$promise
+    return Review.query({ term, filter }).$promise
       .then(result => {
-        $scope.posts = result;
+        $scope.reviews = result;
       });
   };
 
@@ -66,9 +66,9 @@ angular.module('advanced.controllers').controller(CONTROLLER, ($scope, Post, Use
       });
   };
 
-  $scope.openNewPostModal = () => $mdDialog.show({
-    controller: newPostDialog.controller,
-    template: newPostDialog.template,
+  $scope.openNewReviewModal = () => $mdDialog.show({
+    controller: newReviewDialog.controller,
+    template: newReviewDialog.template,
     clickOutsideToClose: false
   });
 });

@@ -1,23 +1,23 @@
 <div flex layout="column">
     <md-list flex layout="row" style="overflow-y:auto" layout-align layout-wrap>
-        <md-list-item ng-repeat="post in posts | orderBy: '-date' track by post._id" flex>
+        <md-list-item ng-repeat="review in reviews | orderBy: '-date' track by review._id" flex>
             <md-card layout-padding>
                 <md-card-header-text layout="column">
-                    <span class="md-title">{{post.author}}</span>
-                    <span class="md-subhead">{{post.date | amCalendar}}</span>
+                    <span class="md-title">{{review.author}}</span>
+                    <span class="md-subhead">{{review.date | amCalendar}}</span>
                 </md-card-header-text>
                 <md-card-title>
                     <md-card-title-text>
-                        <span class="md-headline">{{post.title}}</span>
+                        <span class="md-headline">{{review.title}}</span>
                     </md-card-title-text>
                 </md-card-title>
-                <label>difficulty: {{post.difficulty}}</label>
+                <label>category: {{review.category}}</label>
                 <div style="column-count: 3; column-gap:40px; column-rule: 1px solid lightgrey">
-                    {{post.content}}
+                    {{review.content}}
                 </div>
                 <md-card-actions layout="row" layout-align="end center">
-                    <md-button ng-click="editPost(post)">Edit</md-button>
-                    <md-button ng-click="deletePost(post)">Delete</md-button>
+                    <md-button ng-click="editReview(review)">Edit</md-button>
+                    <md-button ng-click="deleteReview(review)">Delete</md-button>
                 </md-card-actions>
             </md-card>
         </md-list-item>

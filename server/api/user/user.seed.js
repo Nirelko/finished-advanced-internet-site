@@ -1,30 +1,23 @@
 export default {
   seed() {
     return [{
-      firstname: 'Stav',
-      lastname: 'Levinger',
-      userName: 'stav',
+      firstname: 'Nirel',
+      lastname: 'Yehoyada',
+      userName: 'nirelko',
       password: '123',
       admin: true
     },
     {
-      firstname: 'Shenhav',
-      lastname: 'Meshulam',
-      userName: 'shenhav',
+      firstname: 'Asaf',
+      lastname: 'Liberman',
+      userName: 'asafl95',
       password: '123',
       admin: true
     },
     {
-      firstname: 'Dana',
-      lastname: 'Eliyahu',
-      userName: 'dana',
-      password: '123',
-      admin: true
-    },
-    {
-      firstname: 'Tom',
-      lastname: 'Mendelson',
-      userName: 'tom',
+      firstname: 'Niv',
+      lastname: 'Zatelmanski',
+      userName: 'Nivz',
       password: '123',
       admin: true
     }];

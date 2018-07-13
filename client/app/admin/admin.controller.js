@@ -3,32 +3,32 @@ import io from 'socket.io-client';
 
 import { remove } from 'lodash';
 
-import editPostDialog from './edit-post';
+import editReviewDialog from './edit-review';
 
 const CONTROLLER = 'adminController';
 
 angular.module('advanced.controllers')
-.controller(CONTROLLER, ($scope, Post, $mdDialog, $mdToast, LoggedUser) => {
+.controller(CONTROLLER, ($scope, Review, $mdDialog, $mdToast, LoggedUser) => {
   LoggedUser.ensureLogged();
 
   const socket = io('http://localhost:8318/');
   socket.on('refresh', () => {
-    $scope.posts = Post.query();
+    $scope.reviews = Review.query();
   });
 
-  $scope.posts = Post.query();
+  $scope.reviews = Review.query();
 
-  $scope.editPost = post => $mdDialog.show({
-    controller: editPostDialog.controller,
-    template: editPostDialog.template,
+  $scope.editReview = review => $mdDialog.show({
+    controller: editReviewDialog.controller,
+    template: editReviewDialog.template,
     clickOutsideToClose: false,
     locals: {
-      post
+      review
     }
   });
 
-  $scope.deletePost = post => Post.delete({ id: post._id }).$promise
-    .then(() => remove($scope.posts, ({ _id }) => _id === post._id))
+  $scope.deleteReview = review => Review.delete({ id: review._id }).$promise
+    .then(() => remove($scope.reviews, ({ _id }) => _id === review._id))
     .then(() => $mdToast.show($mdToast.simple()
       .textContent('Review deleted!')
       .position('bottom left')

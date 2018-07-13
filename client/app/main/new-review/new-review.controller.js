@@ -2,10 +2,10 @@ import angular from 'angular';
 
 const CONTROLLER = 'newPost';
 
-angular.module('advanced.controllers').controller(CONTROLLER, ($scope, Review, $mdDialog, LoggedUser) => {
+angular.module('advanced.controllers').controller(CONTROLLER, ($scope, Review, $mdDialog, LoggedUser, Categories) => {
   const loggedUser = LoggedUser.get();
 
-  $scope.categories = ['Electronics', 'Technology', 'Programming', 'Cars', 'Home'];
+  $scope.categories = Categories;
   $scope.review = {
     content: '',
     title: '',
@@ -13,10 +13,10 @@ angular.module('advanced.controllers').controller(CONTROLLER, ($scope, Review, $
     category: ''
   };
 
-  $scope.savePost = () => {
-    $scope.post.date = new Date();
+  $scope.saveReview = () => {
+    $scope.review.date = new Date();
 
-    return Review.save($scope.post).$promise
+    return Review.save($scope.review).$promise
       .then($mdDialog.hide);
   };
 

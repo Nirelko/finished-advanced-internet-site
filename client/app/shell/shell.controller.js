@@ -5,7 +5,7 @@ import logo from './logo2.jpg';
 const CONTROLLER = 'shellController';
 
 angular.module('advanced.controllers')
-  .controller(CONTROLLER, ($scope, $state, Post, LoggedUser) => {
+  .controller(CONTROLLER, ($scope, $state, LoggedUser) => {
     $scope.logout = () => {
       LoggedUser.logout();
       $state.transitionTo('shell.login', {}, { location: 'replace' });

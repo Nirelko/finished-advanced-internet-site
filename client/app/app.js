@@ -6,6 +6,7 @@ import ngMap from 'ngmap';
 
 import advancedServices from './services';
 import advancedControllers from './controllers';
+import consts from './consts';
 
 import 'mdi/css/materialdesignicons.css';
 import 'angular-material/angular-material.css';
@@ -18,7 +19,8 @@ angular.module('advanced', [
   'angularMoment',
   'ngAnimate',
   advancedControllers,
-  advancedServices
+  advancedServices,
+  consts
 ])
     .config(($urlRouterProvider, $locationProvider, $mdThemingProvider) => {
       $mdThemingProvider.theme('default')

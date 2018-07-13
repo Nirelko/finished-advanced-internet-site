@@ -1,11 +1,11 @@
 import mongoose from 'mongoose';
 import { createSeedModel } from 'mongoose-plugin-seed';
-import seed from './review.seed';
 import mongoosePaginate from 'mongoose-paginate';
 
-const { Schema } = mongoose;
+import seed from './review.seed';
+import categories from '../../../common/consts/categories';
 
-export const categories = ['Electronics', 'Technology', 'Programming', 'Cars', 'Home'];
+const { Schema } = mongoose;
 
 const ReviewSchema = new Schema({
   title: {

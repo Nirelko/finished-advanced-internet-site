@@ -24,10 +24,10 @@ export function getRecommendedReview({ params: { id } }) {
         const userReviews = result.filter(x => x.author === user.userName);
         const notUserReviews = result.filter(x => x.author !== user.userName);
 
-        const difficulties = userReviews.map(({ difficulty }) => difficulty);
-        const avg = Math.round(difficulties.reduce((a, b) => a + b) / difficulties.length);
+        const categories = userReviews.map(({ category }) => category);
+        const avg = Math.round(categories.reduce((a, b) => a + b) / categories.length);
 
-        const rec = notUserReviews.find(x => x.difficulty === avg);
+        const rec = notUserReviews.find(x => x.category === avg);
 
         return rec ? Promise.resolve(rec)
           : Promise.reject();
