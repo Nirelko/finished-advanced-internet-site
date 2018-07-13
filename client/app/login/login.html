@@ -1,0 +1,15 @@
+<div flex="row">
+  <md-card layout="column" flex="50" layout-padding>
+    <h1>Login</h1>
+    <md-input-container>
+      <input type="text" placeholder="user name" ng-model="user.userName">
+    </md-input-container>
+    <md-input-container>
+      <input type="text" placeholder="password" ng-model="user.password">
+    </md-input-container>
+    <div>
+      <md-button ng-click="login()" ng-disabled="!user.userName || !user.password">Login!</md-button>
+      <md-button ui-sref="shell.register">Not a user yet? Register!</md-button>
+    </div>
+  </md-card>
+</div>

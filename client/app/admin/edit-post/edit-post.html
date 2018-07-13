@@ -1,0 +1,39 @@
+<md-dialog class="dialog" flex=65>
+    <md-toolbar class="md-primary">
+        <div class="md-toolbar-tools">
+            <h2>Edit an existing post</h2>
+            <span flex></span>
+            <md-button class="md-icon-button md-accent" ng-click="closeModal()">
+                <i class="mdi mdi-close mdi-24px"></i>
+            </md-button>
+        </div>
+    </md-toolbar>
+    <md-dialog-content>
+        <div class="md-dialog-content">
+            <form>
+                <div layout="row">
+                    <md-input-container>
+                        <input placeholder="author" required maxlength="35" md-maxlength="35" type="text" ng-model="post.author">
+                    </md-input-container>
+                    <md-input-container>
+                        <input placeholder="title" required maxlength="50" md-maxlength="50" type="text" ng-model="post.title">
+                    </md-input-container>
+                </div>
+                <div layout="column">
+                    <label>difficulty</label>
+                    <md-select ng-model="post.difficulty">
+                        <md-option ng-repeat="difficulty in difficulties" ng-value="difficulty">{{difficulty}}</md-option>
+                    </md-select>
+                </div>
+                <div layout="column">
+                    <md-input-container>
+                        <textarea md-maxlength="1500" maxlength="1500" rows="15" required placeholder="content" type="text" ng-model="post.content"></textarea>
+                    </md-input-container>
+                </div>
+            </form>
+        </div>
+    </md-dialog-content>
+    <md-dialog-actions layout="row">
+        <md-button class="md-primary" ng-click="editPost()">Submit</md-button>
+    </md-dialog-actions>
+</md-dialog>

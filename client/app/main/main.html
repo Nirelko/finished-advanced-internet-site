@@ -1,0 +1,97 @@
+<md-content flex layout="column">
+    <div flex="12">
+        <div flex="50" layout="row" layout-align="space-around">
+            <h3>Search posts:</h3>
+            <md-input-container>
+                <label>Filter</label>
+                <md-select ng-model="postFilterBy">
+                    <md-option ng-value="">None</md-option>
+                    <md-option ng-repeat="filter in postFilterTypes" ng-value="filter">{{filter}}</md-option>
+                </md-select>
+            </md-input-container>
+            <md-input-container>
+                <input placeholder="Search Term" type="text" ng-model="postSearchTerm">
+            </md-input-container>
+            <md-button ng-click="searchPost()">Search</md-button>
+        </div>
+        <div flex="50" layout="row" layout-align="space-around">
+            <h3>Search users:</h3>
+            <md-input-container>
+                <label>Filter</label>
+                <md-select ng-model="userFilterBy">
+                    <md-option ng-value="">None</md-option>
+                    <md-option ng-repeat="filter in userFilterTypes" ng-value="filter">{{filter}}</md-option>
+                </md-select>
+            </md-input-container>
+            <md-input-container>
+                <input placeholder="Search Term" type="text" ng-model="userSearchTerm">
+            </md-input-container>
+            <md-button ng-click="searchUser()">Search</md-button>
+        </div>
+    </div>
+    <md-card layout-padding ng-if="recomendedPost" style="background-color: #fed1fe">
+        <md-card-header-text layout="column">
+            <span class="md-headline">{{recomendedPost.title}}</span>
+        </md-card-header-text>
+        <md-card-title>
+            <md-card-title-text>
+                <i>by: {{recomendedPost.author}} ({{recomendedPost.date | amCalendar}})</i>
+            </md-card-title-text>
+        </md-card-title>
+        <md-card-content>
+            <label>difficulty: {{recomendedPost.difficulty}}</label>
+            <div style="column-count: 3; column-gap:40px; column-rule: 1px solid lightgrey">
+                {{recomendedPost.content}}
+            </div>
+            <a ng-href="https://twitter.com/intent/tweet?screen_name=CoolRecipe&text=Check out this cool recipe for {{post.title}} ! {{post.content}}"
+                class="twitter-mention-button" data-show-count="false">Tweet to CoolRecipe</a>
+            <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+        </md-card-content>
+    </md-card>
+    <md-list flex>
+        <div ng-hide="showUsers" flex layout="row" layout-wrap layout-align="space-around">
+            <md-list-item ng-repeat="post in posts | orderBy: '-date' track by post._id" flex>
+                <md-card layout-padding flex>
+                    <md-card-header-text layout="column">
+                        <span class="md-headline">{{post.title}}</span>
+                    </md-card-header-text>
+                    <md-card-title>
+                        <md-card-title-text>
+                            <i>by: {{post.author}} ({{post.date | amCalendar}})</i>
+                        </md-card-title-text>
+                    </md-card-title>
+                    <md-card-content>
+                        <label>difficulty: {{post.difficulty}}</label>
+                        <div style="column-count: 3; column-gap:40px; column-rule: 1px solid lightgrey">
+                            {{post.content}}
+                        </div>
+                        <a ng-href="https://twitter.com/intent/tweet?screen_name=CoolRecipe&text=Check out this cool recipe for {{post.title}} ! {{post.content}}"
+                            class="twitter-mention-button" data-show-count="false">Tweet to CoolRecipe</a>
+                        <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+                    </md-card-content>
+                </md-card>
+            </md-list-item>
+        </div>
+    </md-list>
+    <md-list flex>
+        <div ng-show="showUsers" flex layout="row" layout-wrap layout-align="space-around">
+            <md-list-item ng-repeat="user in users | orderBy: '-userName' track by user._id" flex>
+                <md-card layout-padding>
+                    <md-card-header-text layout="column">
+                        <span class="md-headline">{{user.userName}}</span>
+                    </md-card-header-text>
+                    <md-card-content>
+                        <p>
+                            {{user.firstname}} {{user.lastname}}
+                        </p>
+                    </md-card-content>
+                </md-card>
+            </md-list-item>
+        </div>
+    </md-list>
+    <md-button class="md-primary md-fab md-fab-bottom-right" ng-click="openNewPostModal()" style="position: fixed">
+        <i class="mdi mdi-plus">
+            <md-tooltip md-direction="right">הוסף מתכון</md-tooltip>
+        </i>
+    </md-button>
+</md-content>

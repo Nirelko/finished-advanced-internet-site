@@ -1,0 +1,30 @@
+<div flex layout="column">
+    <md-toolbar flex="12" layout="row" class="md-primary" layout-padding>
+        <h1 class="header">
+            <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/food-profile_image-0a2c3ed2f8d119ea-300x300.png" alt="Mountain View"
+                height="55px"> Recipes
+        </h1>
+        <div flex></div>
+        <div>
+            <md-button ng-click="logout()" ng-if="isLogged">Logout</md-button>
+        </div>
+    </md-toolbar>
+    <div layout="row" flex>
+        <nav layout="row" flex="15">
+            <md-sidenav flex layout="column" layout-align="space-around" md-whiteframe="4" md-is-locked-open="true" class="md-sidenav-right"
+                layout-padding>
+                <div flex layout="column" ng-show="isLogged">
+                    <md-button ui-sref="shell.main">Home</md-button>
+                    <md-button ui-sref="shell.about">About</md-button>
+                    <md-button ui-sref="shell.admin" ng-if="isAdmin">Admin panel</md-button>
+                    <md-button ui-sref="shell.statistics" ng-if="isAdmin">Statistics</md-button>
+                </div>
+                <div flex></div>
+                <footer>
+                    All rights reserved to Recipes
+                </footer>
+            </md-sidenav>
+        </nav>
+        <div flex layout="column" ui-view layout-padding></div>
+    </div>
+</div>
