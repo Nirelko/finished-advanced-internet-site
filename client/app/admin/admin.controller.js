@@ -28,7 +28,9 @@ angular.module('advanced.controllers')
     $scope.$apply();
   });
 
-  $scope.reviews = Review.query();
+  Review.query().$promise.then(reviews => {
+    $scope.reviews = reviews;
+  });
 
   $scope.editReview = review => $mdDialog.show({
     controller: editReviewDialog.controller,

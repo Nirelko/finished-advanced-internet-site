@@ -28,11 +28,11 @@ angular.module('advanced.services')
       get,
       login,
       onLogin: cb => {
-        onLogin.push(cb)
+        onLogin.push(cb);
       },
       logout,
       onLogout: cb => {
-        onLogout.push(cb)
+        onLogout.push(cb);
       },
       ensureLogged
     };

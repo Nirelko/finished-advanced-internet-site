@@ -8,7 +8,7 @@
     "build": "rimraf dist && npm run babel && webpack -p && ncp package.json dist/package.json",
     "dev": "run-p client-dev server-dev",
     "client-dev": "webpack-dev-server --open",
-    "server-dev": "nodemon -r babel-register --watch server",
+    "server-dev": "nodemon -r babel-register --watch server --inspect=5858",
     "prod": "npm run build && nodemon dist/server/app.js"
   },
   "license": "MIT",
