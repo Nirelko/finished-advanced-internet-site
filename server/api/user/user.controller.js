@@ -27,8 +27,10 @@ export function login({ body }, res) {
     });
 }
 
-export function create({ body }, res) {
-  return User.create(body)
+export function create({ body: newUser }, res) {
+  newUser.avatarId = Math.floor((Math.random() * 8) + 1);
+
+  return User.create(newUser)
     .then(() => {
       res.status(201);
 

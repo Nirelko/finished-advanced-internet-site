@@ -1,3 +1,5 @@
+import _ from 'lodash';
+
 export default {
   seed() {
     return [{
@@ -5,6 +7,7 @@ export default {
       lastname: 'Yehoyada',
       userName: 'nirelko',
       password: '123',
+      avatarId: _.random(1, 8),
       admin: true
     },
     {
@@ -12,6 +15,7 @@ export default {
       lastname: 'Liberman',
       userName: 'asafl95',
       password: '123',
+      avatarId: _.random(1, 8),
       admin: true
     },
     {
@@ -19,6 +23,7 @@ export default {
       lastname: 'Zatelmanski',
       userName: 'Nivz',
       password: '123',
+      avatarId: _.random(1, 8),
       admin: true
     }];
   }

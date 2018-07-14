@@ -1,15 +1,19 @@
 <form flex="row" style="margin: 50px auto; width: 500px;">
-  <md-card layout="column" layout-padding>
-    <h1 style="text-shadow: 0px 0px 40px #909090;">Login</h1>
-    <md-input-container>
-      <input type="text" placeholder="user name" ng-model="user.userName">
-    </md-input-container>
-    <md-input-container>
-      <input type="password" placeholder="password" ng-model="user.password">
-    </md-input-container>
-    <div class="login-btn">
-      <md-button type="submit" ng-click="login()" class="btn btn-blue btn-round" ng-disabled="!user.userName || !user.password">Login!</md-button>
-      <md-button class="" ui-sref="shell.register">Not a user yet? Register!</md-button>
-    </div>
-  </md-card>
+    <md-card layout="column" layout-padding>
+        <div layout="row" layout-align="center center">
+            <h1 style="text-shadow: 0px 0px 40px #909090;">Login</h1>
+        </div>
+        <md-input-container>
+            <input type="text" placeholder="Username" ng-model="user.userName">
+        </md-input-container>
+        <md-input-container>
+            <input type="password" placeholder="Password" ng-model="user.password">
+        </md-input-container>
+        <div class="login-btn">
+            <md-button type="submit" ng-click="login()" class="btn btn-blue btn-round"
+                       ng-disabled="!user.userName || !user.password">Login!
+            </md-button>
+            <md-button class="" ui-sref="shell.register">Not a user yet? Register!</md-button>
+        </div>
+    </md-card>
 </form>

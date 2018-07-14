@@ -25,7 +25,8 @@ const UserSchema = new Schema({
   admin: {
     type: Boolean,
     default: false
-  }
+  },
+  avatarId: Number
 });
 
 UserSchema.plugin(mongoosePaginate);

@@ -3,6 +3,7 @@ import empty from 'http-reject-empty';
 
 import Review from './review.model';
 import User from '../user/user.model';
+import allCategories from '../../../common/consts/categories';
 
 export function index({ query: { term, filter } }) {
   const query = term && filter ? {
@@ -17,20 +18,24 @@ export function get({ params: { id } }) {
     .then(empty);
 }
 
+const getCategories = userReviews => userReviews.length ?
+  userReviews.map(({ category }) => category) :
+  [allCategories[_.random(0, allCategories.length - 1)]];
+
 export function getRecommendedReview({ params: { id } }) {
   return User.findById(id)
     .then(user => Review.find({})
-      .then(result => {
-        const userReviews = result.filter(x => x.author === user.userName);
-        const notUserReviews = result.filter(x => x.author !== user.userName);
+      .then(allReviews => {
+        const userReviews = allReviews.filter(x => x.author === user.userName);
+        const notUserReviews = allReviews.filter(x => x.author !== user.userName);
 
-        const categories = userReviews.map(({ category }) => category);
+        const categories = getCategories(userReviews);
         const avg = Math.round(categories.reduce((a, b) => a + b) / categories.length);
 
         const rec = notUserReviews.find(x => x.category === avg);
 
-        return rec ? Promise.resolve(rec)
-          : Promise.reject();
+        return rec ? Promise.resolve(rec) :
+          Promise.reject();
       }));
 }
 
@@ -46,36 +51,38 @@ export function getByUsername() {
 }
 
 export function create(io) {
-  return ({ body }, res) => Review.create(body)
-    .then(() => {
+  return ({ body: newReview }, res) => Review.create(newReview)
+    .then(review => {
       res.status(201);
 
-      io.emit('refresh');
+      io.emit('review', {action: 'insert', review});
 
       return Promise.resolve();
     });
 }
 
 export function update(io) {
-  return ({ body, params: { id } }) => Review.findById(id)
+  return ({ body: updatedReview, params: { id } }) => Review.findById(id)
     .then(empty)
     .then(review => {
-      review.author = body.author;
-      review.content = body.content;
-      review.title = body.title;
-      review.category = body.category;
+      review.author = updatedReview.author;
+      review.content = updatedReview.content;
+      review.title = updatedReview.title;
+      review.category = updatedReview.category;
 
       return review.save();
     })
-    .then(() => {
-      io.emit('refresh');
+    .then(review => {
+      io.emit('review', {action: 'update', review});
     })
     .then(_.noop);
 }
 
-export function destroy({ params: { id } }) {
-  return Review.findById(id)
+export function destroy(io) {
+  return ({ params: { id } }) =>  Review.findById(id)
     .then(empty)
     .then(review => review.remove())
-    .then(_.noop);
+    .then(() => {
+      io.emit('review', {action: 'delete', id});
+    });
 }

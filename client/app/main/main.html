@@ -49,7 +49,7 @@
         </md-card-content>
     </md-card>
     <md-list flex>
-        <div ng-hide="showUsers" flex layout="row" layout-wrap layout-align="space-around">
+        <div ng-hide="showUsers" flex layout="column" layout-wrap layout-align="space-around">
             <md-list-item ng-repeat="review in reviews | orderBy: '-date' track by review._id" flex>
                 <md-card layout-padding flex>
                     <md-card-header-text layout="column">
@@ -57,7 +57,7 @@
                     </md-card-header-text>
                     <md-card-content>
                         <div>
-                            <img style="height: 125%;" ng-src="https://trendytheme.net/demo/maxrank/assets/img/team-member-img/team-member-img-{{imgsrc()}}.jpg" alt="">
+                            <img ng-if="getUserAvatarId(review.author)" style="height: 64px; width: 64px;" ng-src="https://trendytheme.net/demo/maxrank/assets/img/team-member-img/team-member-img-{{getUserAvatarId(review.author)}}.jpg" alt="">
                             <span>by: {{review.author}} ({{review.date | amCalendar}})</span>
                         </div>
                         </br>

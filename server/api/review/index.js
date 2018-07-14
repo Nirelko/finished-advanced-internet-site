@@ -16,7 +16,7 @@ export default io => {
   router.get('/:id', controller.get);
   router.post('/', controller.create(io));
   router.put('/:id', controller.update(io));
-  router.delete('/:id', controller.destroy);
+  router.delete('/:id', controller.destroy(io));
 
   return router;
 };

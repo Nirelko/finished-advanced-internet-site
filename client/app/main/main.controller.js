@@ -8,7 +8,7 @@ const CONTROLLER = 'mainController';
 angular.module('advanced.controllers').controller(CONTROLLER, ($scope, Review, User, $mdDialog, LoggedUser) => {
   LoggedUser.ensureLogged();
 
-  const logged = LoggedUser.get()._id;
+  const loggedId = LoggedUser.get()._id;
 
   $scope.showUsers = false;
   $scope.reviews = Review.query();
@@ -23,15 +23,26 @@ angular.module('advanced.controllers').controller(CONTROLLER, ($scope, Review, U
 
   const socket = io('http://localhost:8318/');
 
-  socket.on('refresh', () => {
-    $scope.reviews = Review.query();
+  socket.on('review', ({action, review, id}) => {
+    if (action === 'delete') {
+      $scope.reviews = $scope.reviews.filter(x => x._id !== id);
+    }
+    else {
+      let itemIndex = $scope.reviews.indexOf($scope.reviews.find(x => x._id === review._id));
+
+      itemIndex = itemIndex !== -1 ? itemIndex : $scope.reviews.length;
+
+      $scope.reviews[itemIndex] = review;
+    }
+
+    $scope.$apply();
   });
 
   Review.recomended({
-    id: logged
+    id: loggedId
   }).$promise
-    .then(result => {
-      $scope.recomendedReview = result;
+    .then(review => {
+      $scope.recomendedReview = review;
     });
 
   $scope.searchReview = () => {
@@ -44,7 +55,7 @@ angular.module('advanced.controllers').controller(CONTROLLER, ($scope, Review, U
       term = '';
     }
 
-    return Review.query({ term, filter }).$promise
+    return Review.query({term, filter}).$promise
       .then(result => {
         $scope.reviews = result;
       });
@@ -60,21 +71,19 @@ angular.module('advanced.controllers').controller(CONTROLLER, ($scope, Review, U
       term = '';
     }
 
-    return User.query({ term, filter }).$promise
+    return User.query({term, filter}).$promise
       .then(result => {
         $scope.users = result;
       });
   };
+
+  $scope.getUserAvatarId = authorName => $scope.users.$resolved && $scope.users.find(x => x.userName === authorName).avatarId;
 
   $scope.openNewReviewModal = () => $mdDialog.show({
     controller: newReviewDialog.controller,
     template: newReviewDialog.template,
     clickOutsideToClose: false
   });
-
-  $scope.imgsrc = () => {
-    return Math.floor((Math.random() * 8) + 1);
-  }
 });
 
 export default CONTROLLER;

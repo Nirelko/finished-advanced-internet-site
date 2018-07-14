@@ -12,8 +12,20 @@ angular.module('advanced.controllers')
   LoggedUser.ensureLogged();
 
   const socket = io('http://localhost:8318/');
-  socket.on('refresh', () => {
-    $scope.reviews = Review.query();
+
+  socket.on('review', ({action, review, id}) => {
+    if (action === 'delete') {
+      $scope.reviews = $scope.reviews.filter(x => x._id !== id);
+    }
+    else {
+      let itemIndex = $scope.reviews.indexOf($scope.reviews.find(x => x._id === review._id));
+
+      itemIndex = itemIndex !== -1 ? itemIndex : $scope.reviews.length;
+
+      $scope.reviews[itemIndex] = review;
+    }
+
+    $scope.$apply();
   });
 
   $scope.reviews = Review.query();
