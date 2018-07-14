@@ -71,6 +71,10 @@ angular.module('advanced.controllers').controller(CONTROLLER, ($scope, Review, U
     template: newReviewDialog.template,
     clickOutsideToClose: false
   });
+
+  $scope.imgsrc = () => {
+    return Math.floor((Math.random() * 8) + 1);
+  }
 });
 
 export default CONTROLLER;

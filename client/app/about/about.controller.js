@@ -27,7 +27,7 @@ var c = document.getElementById("myCanvas");
 var ctx = c.getContext("2d");
 ctx.font = "30px Arial";
 ctx.fillStyle = "black";
-ctx.fillText("Enjoy!!:))))",10,50);
+ctx.fillText("We Made you know you better",10,50);
   $http(request)
     .then(response => {
       $scope.data = response.data.list[0].weather[0].description;

@@ -1,16 +1,22 @@
 <div flex layout="column">
-    <md-toolbar flex="12" layout="row" class="md-primary" layout-padding>
-        <h1 class="header">
-            <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/food-profile_image-0a2c3ed2f8d119ea-300x300.png" alt="Mountain View"
-                height="55px"> Recipes
-        </h1>
+    <md-toolbar flex="12" layout="row" class="md-primary">
+        <div class="header">
+            <img src="https://image.ibb.co/dzupz8/logo.png">
+        </div>
         <div flex></div>
         <div>
-            <md-button ng-click="logout()" ng-if="isLogged">Logout</md-button>
+            <md-button style="color:white" ng-click="logout()" ng-if="isLogged">Logout</md-button>
         </div>
     </md-toolbar>
+    <div class="header-border-style">
+        <span class="border-bg-one"></span>
+        <span class="border-bg-two"></span>
+        <span class="border-bg-three"></span>
+        <span class="border-bg-four"></span>
+        <span class="border-bg-five"></span>
+    </div>
     <div layout="row" flex>
-        <nav layout="row" flex="15">
+        <nav layout="row" flex="15" ng-if="isLogged">
             <md-sidenav flex layout="column" layout-align="space-around" md-whiteframe="4" md-is-locked-open="true" class="md-sidenav-right"
                 layout-padding>
                 <div flex layout="column" ng-show="isLogged">
@@ -21,7 +27,7 @@
                 </div>
                 <div flex></div>
                 <footer>
-                    All rights reserved to Recipes
+                    Reviews is in my heart
                 </footer>
             </md-sidenav>
         </nav>

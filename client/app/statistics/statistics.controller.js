@@ -6,8 +6,8 @@ angular.module('advanced.controllers')
   .controller(CONTROLLER, ($scope, $state, Review, LoggedUser) => {
     LoggedUser.ensureLogged();
 
-    $scope.createDetailedRecipesGraph = () => {
-      // get the recipes' data
+    $scope.createDetailedreviewsGraph = () => {
+      // get the reviews' data
       $.get('api/reviews', onReviewsLoaded);
     };
 
@@ -24,7 +24,7 @@ angular.module('advanced.controllers')
       const yAxis = d3.svg.axis().scale(y).orient('left').ticks(10);
 
       // add the SVG element
-      const svg = d3.select('#detailed-recipes-graph').append('svg')
+      const svg = d3.select('#detailed-reviews-graph').append('svg')
         .attr('width', width + margin.left + margin.right)
         .attr('height', height + margin.top + margin.bottom)
         .append('g')
@@ -105,7 +105,7 @@ angular.module('advanced.controllers')
         .append('g')
         .attr('transform', `translate(${margin.left},${margin.top})`);
 
-      // get the recipes' data
+      // get the reviews' data
       Review.byUsername().$promise
         .then(result => {
           const data = result;

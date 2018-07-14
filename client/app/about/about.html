@@ -1,34 +1,32 @@
-<div>
-    <img src="http://www.missindia.menu/wp-content/uploads/2014/10/home-panel-11-1.jpg" alt="Mountain View" width="100%" height="550px">
-    <header>
-    <h2 class="name-header">Recipes</h2>
+<div style="overflow:auto;">
+    <header style="background: #2b1f3b;display: flex;border-radius: 25px;overflow: hidden;">
+        <img src="https://trendytheme.net/demo/maxrank/assets/img/idea.png" style="height: 250px;">
+        <h2 class="name-header">Reviews</h2>
     </header>
     <aside layout-padding>
-            <p>
-                <h4>A recipes blog created by 4 young developers in 2018</h4>
-            </p>
-            
-            <section class="intro">
-                This website was created in order to bring you the best and easiest recipes in every category you can imagine, and inspire you to create your own recipes and share them with everyone.
-                We hope you'll enjoy our unique platform and improve your cooking skills.
-                Remember - sharing is caring :)
-                Upload your recipes, view other users' recipes and enjoy this YUMMY COLLABORATION!
-            </section>
-            <p>
-                <div flex layout="column">
-                    <span>You must watch these Brownies recepies!</span>
-                    <iframe width="420" height="345" src="https://www.youtube.com/embed/3LIrP4nHrI8">
-                    </iframe>
-                </div>
-            </p>
-            <canvas id="myCanvas" width="100" height="60"></canvas>
+        <p>
+            <h4> This site was built for you to get more data about things you want to buy
+            </h4>
+        </p>
+
+        <section class="intro">
+            Sharing your opinion is the best thing to do when you buy somthing
+        </section>
+        <p>
+            <div flex layout="column">
+                <span>You must watch these Brownies recepies!</span>
+                <video controls="" autoplay="" name="media"><source src="http://193.106.55.146:8888/files/What%20is%20REVIEW%20What%20does%20REVIEW%20mean%20REVIEW%20meaning%20-%20REVIEW%20definition%20-%20How%20to%20pronounce%20REVIEW.mp4" type="video/mp4"></video>
+
+            </div>
+        </p>
+        <canvas id="myCanvas" width="750" height="60"></canvas>
     </aside>
     <p>
         <div>
             <span>The Weather in Jerusalem: {{data}}</span>
         </div>
     </p>
-    
+
 
     <div map-lazy-load="https://maps.google.com/maps/api/js">
         <ng-map center="[{{location.latitude}}, {{location.longtitude}}]" zoom="3">

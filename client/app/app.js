@@ -24,14 +24,14 @@ angular.module('advanced', [
 ])
     .config(($urlRouterProvider, $locationProvider, $mdThemingProvider) => {
       $mdThemingProvider.theme('default')
-            .primaryPalette('purple', {
+            .primaryPalette('blue', {
               default: '500'
             })
             .warnPalette('blue-grey', {
               default: '900',
               'hue-1': '50'
             })
-            .accentPalette('amber', {
+            .accentPalette('light-blue', {
               default: '400',
               'hue-1': '600'
             });

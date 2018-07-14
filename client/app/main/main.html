@@ -1,6 +1,6 @@
 <md-content flex layout="column">
-    <div flex="12">
-        <div flex="50" layout="row" layout-align="space-around">
+    <div style="display: flex; background: white;border-radius: 7px;box-shadow: 0 0 25px #3333;">
+        <div flex="50" layout="row" layout-align="space-around center" style="border-right:1px solid lightgrey">
             <h3>Search reviews:</h3>
             <md-input-container>
                 <label>Filter</label>
@@ -12,9 +12,9 @@
             <md-input-container>
                 <input placeholder="Search Term" type="text" ng-model="reviewSearchTerm">
             </md-input-container>
-            <md-button ng-click="searchReview()">Search</md-button>
+            <md-button class="btn btn-secondary btn-round" ng-click="searchReview()">Search</md-button>
         </div>
-        <div flex="50" layout="row" layout-align="space-around">
+        <div flex="50" layout="row" layout-align="space-around center">
             <h3>Search users:</h3>
             <md-input-container>
                 <label>Filter</label>
@@ -26,12 +26,12 @@
             <md-input-container>
                 <input placeholder="Search Term" type="text" ng-model="userSearchTerm">
             </md-input-container>
-            <md-button ng-click="searchUser()">Search</md-button>
+            <md-button class="btn btn-green btn-round" ng-click="searchUser()">Search</md-button>
         </div>
     </div>
     <md-card layout-padding ng-if="recomendedReview" style="background-color: #fed1fe">
         <md-card-header-text layout="column">
-            <span class="md-headline">{{recomendedReview.title}}</span>
+            <span class="md-headline review-title">{{recomendedReview.title}}</span>
         </md-card-header-text>
         <md-card-title>
             <md-card-title-text>
@@ -43,8 +43,8 @@
             <div style="column-count: 3; column-gap:40px; column-rule: 1px solid lightgrey">
                 {{recomendedReview.content}}
             </div>
-            <a ng-href="https://twitter.com/intent/tweet?screen_name=CoolRecipe&text=Check out this cool review for {{review.title}} ! {{review.content}}"
-                class="twitter-mention-button" data-show-count="false">Tweet to CoolRecipe</a>
+            <a ng-href="https://twitter.com/intent/tweet?screen_name=ReviewInMyHeart&text=Check out this cool review for {{review.title}} ! {{review.content}}"
+                class="twitter-mention-button" data-show-count="false">Tweet to ReviewInMyHeart</a>
             <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
         </md-card-content>
     </md-card>
@@ -53,21 +53,23 @@
             <md-list-item ng-repeat="review in reviews | orderBy: '-date' track by review._id" flex>
                 <md-card layout-padding flex>
                     <md-card-header-text layout="column">
-                        <span class="md-headline">{{review.title}}</span>
+                        <span class="md-headline review-title">{{review.title}}</span>
                     </md-card-header-text>
-                    <md-card-title>
-                        <md-card-title-text>
-                            <i>by: {{review.author}} ({{review.date | amCalendar}})</i>
-                        </md-card-title-text>
-                    </md-card-title>
                     <md-card-content>
+                        <div>
+                            <img style="height: 125%;" ng-src="https://trendytheme.net/demo/maxrank/assets/img/team-member-img/team-member-img-{{imgsrc()}}.jpg" alt="">
+                            <span>by: {{review.author}} ({{review.date | amCalendar}})</span>
+                        </div>
+                        </br>
                         <label>category: {{review.category}}</label>
-                        <div style="column-count: 3; column-gap:40px; column-rule: 1px solid lightgrey">
+                        <div style="column-count: 2; column-gap:50px; column-rule: 1px solid lightgrey">
                             {{review.content}}
                         </div>
-                        <a ng-href="https://twitter.com/intent/tweet?screen_name=CoolRecipe&text=Check out this cool recipe for {{review.title}} ! {{review.content}}"
-                            class="twitter-mention-button" data-show-count="false">Tweet to CoolRecipe</a>
-                        <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+                        <div style="float: right;">
+                            <a ng-href="https://twitter.com/intent/tweet?screen_name=ReviewInMyHeart&text=Check out this cool recipe for {{review.title}} ! {{review.content}}"
+                                class="twitter-mention-button" data-show-count="false">Tweet to ReviewInMyHeart</a>
+                            <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+                        </div>
                     </md-card-content>
                 </md-card>
             </md-list-item>

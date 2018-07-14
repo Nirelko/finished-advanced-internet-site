@@ -1,4 +1,4 @@
-<div flex="row">
+<form flex="row">
   <md-card layout="column" flex="50" layout-padding>
     <h1>Register </h1>
     <md-input-container>
@@ -11,15 +11,15 @@
       <input type="text" placeholder="user name" ng-model="user.userName">
     </md-input-container>
     <md-input-container>
-      <input type="text" placeholder="password" ng-model="user.password">
+      <input type="password" placeholder="password" ng-model="user.password">
     </md-input-container>
     <md-checkbox ng-model="user.admin" aria-label="admin">
       Is Admin
     </md-checkbox>
 
     <div>
-      <md-button ng-click="register()" ng-disabled="!user.userName || !user.password || !user.firstname || !user.lastname">Register!</md-button>
+      <md-button type="submit" ng-click="register()" ng-disabled="!user.userName || !user.password || !user.firstname || !user.lastname">Register!</md-button>
       <md-button ui-sref="shell.login">Already a user? Login!</md-button>
     </div>
   </md-card>
-</div>
+</fprm>
