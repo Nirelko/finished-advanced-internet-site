@@ -6,9 +6,20 @@ import newReviewDialog from './new-review';
 const CONTROLLER = 'mainController';
 
 angular.module('advanced.controllers').controller(CONTROLLER, ($scope, Review, User, $mdDialog, LoggedUser) => {
-  LoggedUser.ensureLogged();
 
-  const loggedId = LoggedUser.get()._id;
+  LoggedUser.ensureLogged().then((id) => {
+      $scope.loggedId = id;
+      Review.recomended({
+          id: $scope.loggedId
+      }).$promise
+          .then(review => {
+            console.log(review);
+              if(review['value'] != -1) {
+                  $scope.recomendedReview = review;
+              }
+          });
+      console.log(id);
+  });
 
   $scope.showUsers = false;
   $scope.reviews = Review.query();
@@ -38,12 +49,7 @@ angular.module('advanced.controllers').controller(CONTROLLER, ($scope, Review, U
     $scope.$apply();
   });
 
-  Review.recomended({
-    id: loggedId
-  }).$promise
-    .then(review => {
-      $scope.recomendedReview = review;
-    });
+
 
   $scope.searchReview = () => {
     $scope.showUsers = false;

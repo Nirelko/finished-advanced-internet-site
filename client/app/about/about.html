@@ -15,7 +15,7 @@
         <p>
             <div flex layout="column">
                 <span>You must watch these Brownies recepies!</span>
-                <video controls="" autoplay="" name="media"><source src="http://193.106.55.146:8888/files/What%20is%20REVIEW%20What%20does%20REVIEW%20mean%20REVIEW%20meaning%20-%20REVIEW%20definition%20-%20How%20to%20pronounce%20REVIEW.mp4" type="video/mp4"></video>
+                <video controls="" name="media"><source src="http://193.106.55.146:8888/files/What%20is%20REVIEW%20What%20does%20REVIEW%20mean%20REVIEW%20meaning%20-%20REVIEW%20definition%20-%20How%20to%20pronounce%20REVIEW.mp4" type="video/mp4"></video>
 
             </div>
         </p>
@@ -28,9 +28,10 @@
     </p>
 
 
-    <div map-lazy-load="https://maps.google.com/maps/api/js">
-        <ng-map center="[{{location.latitude}}, {{location.longtitude}}]" zoom="3">
-            <marker position="[{{location.latitude}}, {{location.longtitude}}] "></marker>
-        </ng-map>
+
+
+    <div>
+        <iframe width="500" height="400" frameborder="0" ng-src="{{url}}" scrolling="no">
+        </iframe>
     </div>
 </div>

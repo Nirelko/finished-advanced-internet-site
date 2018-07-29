@@ -2,13 +2,23 @@ import angular from 'angular';
 
 const CONTROLLER = 'aboutController';
 
-angular.module('advanced.controllers').controller(CONTROLLER, ($scope, $http, Map, LoggedUser) => {
+angular.module('advanced.controllers').controller(CONTROLLER, ($scope, $http, Map, $sce, LoggedUser) => {
   LoggedUser.ensureLogged();
 
   Map.query().$promise
     .then((result) => {
       $scope.location = result[0];
+
+        let url = "https://www.bing.com/maps/embed?h=400&w=500&cp=" +
+            $scope.location.latitude +
+            "~" +
+            $scope.location.longtitude +
+            "&lvl=16&typ=d&sty=r&src=SHELL&FORM=MBEDV8"
+      console.log(url);
+      $scope.url = $sce.trustAsResourceUrl(url);
+
     });
+
   const URL = 'http://api.openweathermap.org/data/2.5/forecast/daily';
 
   const request = {

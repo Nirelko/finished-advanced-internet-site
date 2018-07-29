@@ -1,4 +1,4 @@
-<md-content flex layout="column">
+<md-content flex layout="column" ng-if="loggedId">
     <div style="display: flex; background: white;border-radius: 7px;box-shadow: 0 0 25px #3333;">
         <div flex="50" layout="row" layout-align="space-around center" style="border-right:1px solid lightgrey">
             <h3>Search reviews:</h3>
@@ -48,8 +48,9 @@
             <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
         </md-card-content>
     </md-card>
+
     <md-list flex>
-        <div ng-hide="showUsers" flex layout="column" layout-wrap layout-align="space-around">
+        <div ng-if="!showUsers" flex layout="column" layout-wrap layout-align="space-around">
             <md-list-item ng-repeat="review in reviews | orderBy: '-date' track by review._id" flex>
                 <md-card layout-padding flex>
                     <md-card-header-text layout="column">

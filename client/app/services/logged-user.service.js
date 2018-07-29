@@ -1,7 +1,7 @@
 import angular from 'angular';
 
 angular.module('advanced.services')
-  .service('LoggedUser', $state => {
+  .service('LoggedUser', ($state, $q) => {
     let loggedUser;
     const onLogin = [];
     const onLogout = [];
@@ -19,9 +19,17 @@ angular.module('advanced.services')
     const get = () => loggedUser;
 
     const ensureLogged = () => {
-      if (!loggedUser) {
-        $state.transitionTo('shell.login', {}, { location: 'replace' });
-      }
+        var deferred = $q.defer();
+
+        if (!loggedUser) {
+            deferred.reject(-1);
+            $state.transitionTo('shell.login', {}, { location: 'replace' });
+        } else {
+            console.log(loggedUser);
+            deferred.resolve(loggedUser['_id']);
+        }
+
+        return deferred.promise;
     };
 
     return {

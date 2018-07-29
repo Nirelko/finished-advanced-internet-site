@@ -31,14 +31,14 @@ export function getRecommendedReview({ params: { id } }) {
 
         categories = categories.filter(x => notUserReviews.find(y => y.category === x));
         if (!categories.length) {
-          return Promise.reject();
+          return Promise.resolve({'value':-1});
         }
 
         const mostUsedCategory = _.maxBy(_.values(_.groupBy(categories)), x => x.length)[0];
         const review = notUserReviews.find(x => x.category === mostUsedCategory);
 
         return review ? review :
-          Promise.reject();
+          Promise.resolve({'value':-1});
       }));
 }
 
