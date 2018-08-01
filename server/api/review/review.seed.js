@@ -5,62 +5,45 @@ const [Electronics, Technology, Programming, Cars, Home] = categories;
 export default {
   seed() {
     return [{
-      title: 'Chocolate Chip Cookies',
-      category: Electronics,
-      content: `Preheat oven to 375 degrees F (190 degrees C).
-      In a large bowl, cream together the butter, peanut butter, brown sugar, and white sugar until smooth. Beat in the eggs one at a time, then stir in the corn syrup, water, and vanilla. Combine the flour, baking soda, and salt; stir into the peanut butter mixture. Fold in chocolate chunks. Drop by 1/4 cupfuls 3 inches apart onto ungreased baking sheets.
-      Bake for 12 to 14 minutes in the preheated oven, or until edges are golden. Allow cookies to cool for 1 minute on the cookie sheet before removing to wire racks to cool completely.`,
+      title: 'Seat Ibiza',
+      category: Cars,
+      content: `The Ibiza is Seat’s longest-running nameplate and the car it’s best-known for. It goes toe-to-toe with the Renault Clio, Peugeot 208, Ford Fiesta, Citroen C3, Vauxhall Corsa, Nissan Micra and the rest of the mainstream supermini crowd. This is a part of the market that had a quiet period, but is now coming to life with the new C3, Micra and Fiesta.
+
+Even if you don’t want an Ibiza, pay attention: this car is the first showing of a new VW platform called MQB A0. That’s a smaller, lighter variant of what’s under all the recent VW Group transverse-engined cars. So the Ibiza’s platform will also carry a new small crossover from Seat called the Arona (launching late in 2017), plus very soon the next VW Polo, Audi A1 and Skoda Fabia, and also petite crossovers from VW and Audi.`,
       date: new Date('December 17, 2017 17:24:00'),
       author: 'asafl95'
     }, {
-      title: 'Labneh (Lebanese Yogurt)',
-      category: Technology,
-      content: `Mix Greek yogurt, olive oil, mint, dill, and kosher salt together in a bowl.
-      Cover and refrigerate up to 12 hours.`,
+      title: 'TypeScript',
+      category: Programming,
+      content: `TypeScript is defined as a superset of JavaScript, which means it behaves identical to JavaScript but with extra stuff added on. The language hasn’t been around too long but it’s already quite popular in the dev community.
+
+It grants JS developers access to powerful tools & techniques for writing modern JavaScript, coupled with the option to output ES5 or ES6 code. The Angular team even supports TypeScript as a major part of their framework update.`,
       date: new Date('January 22, 2018 08:45:42'),
       author: 'nirelko'
     }, {
-      title: 'Macaroni and Cheese',
+      title: 'Kotlin',
       category: Programming,
-      content: `Preheat an oven to 350 degrees F (175 degrees C). Grease a 9x13 inch glass baking dish.
-      Fill a large pot with lightly salted water and bring to a rolling boil over high heat. Once the water is boiling, stir in the macaroni, and return to a boil. Cook the pasta uncovered, stirring occasionally, until the pasta has cooked through, but is still firm to the bite, about 8 minutes. Drain and mix with half of the butter.
-      While the macaroni is boiling, melt the remaining butter in a saucepan over medium heat. Stir in the onions, and cook until the onions begin to soften, about 3 minutes. Stir in the flour, and cook 5 minutes longer. Add the milk and bring to a simmer, stirring frequently. Cook and stir until the milk has thickened, about 10 minutes. Once thick and smooth, stir in the salt, white pepper, Worcestershire sauce, hot pepper sauce, mustard, 2 cups of Cheddar cheese, and 1/4 cup of Parmesan cheese. Stir until the cheeses have melted, then stir in the macaroni until evenly coated. Scrape into the prepared baking dish, and smooth the top. Toss the remaining 1 cup Cheddar cheese and 1/4 cup Parmesan cheese with the dry bread crumbs in a mixing bowl. Sprinkle evenly over the top of the macaroni.
-      Bake in the preheated oven until the macaroni is hot and the crust is golden brown, about 30 minutes.`,
+      content: `Kotlin is a statically typed programming language that runs on the Java virtual machine and also can be compiled to JavaScript source code or use the LLVM compiler infrastructure. Its primary development is from a team of JetBrains programmers based in Saint Petersburg, Russia.[2] While the syntax is not compatible with Java, the JVM implementation of Kotlin's standard library is designed to interoperate with Java code and is reliant on Java code from the existing Java Class Library, such as the collections framework[3]. Kotlin uses aggressive type inference to determine the type of values and expressions for which type has been left unstated. This reduces language verbosity relative to Java, which demands often entirely redundant type specifications prior to version 10.`,
       date: new Date('January 5, 2018 18:00:03'),
       author: 'Nivz'
     }, {
-      title: 'Meatballs',
-      category: Cars,
-      content: `Combine ground pork, Italian sausage, ground sirloin, and ground chuck in a large bowl. Mix them with your hands until thoroughly combined.
-      Soak bread chunks in chicken broth in a bowl until completely soft. Combine garlic and parsley in a mini chopper or food processor and grind to a fine paste. Squeeze the excess broth out of the bread, reserving the broth in a bowl, and add the bread to the meats along with the garlic and parsley paste. Gently mix in beaten eggs and grated Pecorino Romano cheese with your hands until fully incorporated into the meat mixture. If the mixture seems dry, pour in some of the reserved chicken broth.
-      Pinch off golf ball-sized pieces of the meat mixture and roll them into meatballs, taking care not to pack them too tightly, and set them on a baking tray. Depending on how big you make them, you should end up with about 30 meatballs.
-      Heat the olive oil and butter in a large skillet over medium-high heat. Working in two or three batches, brown the meatballs on all sides and drain on paper towels. If you're adding them to a pot of sauce, you may undercook them slightly, as they will finish cooking in the sauce.`,
+      title: 'Samsung Q9FN QLED TV',
+      category: Electronics,
+      content: `Samsung’s much-hyped QLED technology suddenly makes sense with the 65-inch 65Q9FN. By combining QLED’s unprecedented brightness and color talents with direct instead of edge backlighting, Samsung has hit on a winning, forward-thinking formula that delivers the best 4K high dynamic range pictures we’ve seen to date.`,
       date: new Date('January 5, 2018 18:05:00'),
       author: 'Nivz'
     }, {
-      title: 'Israeli Salad',
-      category: Home,
-      content: `Toss cucumbers, tomatoes, onion, bell pepper, garlic, parsley, and mint together in a bowl. Drizzle olive oil and lemon juice over the salad and toss to coat; season with salt and pepper.`,
+      title: 'VW Golf GTI',
+      category: Cars,
+      content: `Give it up for the GTI: This iconic hot hatch balances fun and function as few can do, and continues to win a spot on our 10Best Cars list for 2018. The standard powertrain is a 220-hp turbo 2.0-liter inline-four with a six-speed manual. A six-speed automatic costs extra, but it’s almost as much fun as the manual. Sportier trims have upgraded brakes and a torque-sensing limited-slip differential. The GTI’s classic plaid seats come standard, as do agile handling and hatchback practicality.`,
       date: new Date('January 5, 2018 18:07:00'),
       author: 'asafl95'
     }, {
-      title: 'Roasted Cauliflower Soup',
+      title: 'Summer Sheets',
       category: Home,
-      content: `Place the cauliflower florets into a large bowl of lightly salted water; allow to stand for 20 minutes. Drain well, and arrange on a sheet of heavy aluminum foil on a baking sheet. Spray the olive oil cooking spray evenly on the cauliflower.
-      Preheat the oven's broiler and set the oven rack about 6 inches from the heat source.
-      Broil the cauliflower until browned, 20 to 30 minutes.
-      Meanwhile, heat olive oil in a large soup pot, and cook the onion until translucent, about 5 minutes; stir in the garlic and roasted cauliflower. Pour in the water, season with salt and black pepper, and simmer until all the vegetables are tender, about 30 minutes. Blend the soup in the pot with an immersion hand blender until creamy and smooth.`,
+      content: `The sheets that you like most of the year may feel too warm in the summer heat, so just as you keep flannel sheets on hand for cold winter nights, keep lighter sheets ready for summer. After testing dozens and dozens of sets in our ongoing quest for the best sheets, we’ve found that a set in linen or percale cotton (which is more breathable than sateen) is a great way to round out your bedding collection and extend the life of your everyday sheets by giving them the summer off. I’ve highlighted six sets as well as two duvet covers that we love for a summer bed. And if you’re looking for tips on how to dress your bed for summer, see our post on how to mix and match your sheets.`,
       date: new Date('February 14, 2018 12:03:00'),
       author: 'nirelko'
-    }, {
-      title: 'Chocolate Sheet Cake',
-      category: Electronics,
-      content: `Preheat an oven to 350 degrees F (175 degrees C). Grease an 11x17 jelly roll pan.
-      Mix white sugar and flour in a large bowl. Combine 1 cup butter, water, and 3 tablespoons cocoa powder in a small saucepan; stir over medium heat until butter is melted and mixture is well combined. Pour melted butter mixture over sugar and flour; beat well. Beat in baking soda, buttermilk, eggs, and vanilla extract. Pour batter into prepared pan.
-      Bake in preheated oven until a toothpick inserted into the center of cake comes out clean, 20 to 25 minutes. Remove from oven and allow to cool on a wire rack.
-      Combine remaining 1/2 cup butter, 3 tablespoons cocoa powder, and milk in a small saucepan; stir over medium heat until butter is melted and mixture is well combined. Beat powdered sugar into the butter mixture, mixing until frosting is smooth. Stir pecans into frosting and pour over cooled cake.`,
-      date: new Date('March 1, 2018 07:38:16'),
-      author: 'asafl95'
     }];
   }
 };
