@@ -4,13 +4,13 @@
             <h3>Search reviews:</h3>
             <md-input-container>
                 <label>Filter</label>
-                <md-select ng-model="reviewFilterBy">
+                <md-select ng-model="filter.reviewFilterBy">
                     <md-option ng-value="">None</md-option>
                     <md-option ng-repeat="filter in reviewFilterTypes" ng-value="filter">{{filter}}</md-option>
                 </md-select>
             </md-input-container>
             <md-input-container>
-                <input placeholder="Search Term" type="text" ng-model="reviewSearchTerm">
+                <input placeholder="Search Term" type="text" ng-model="filter.reviewSearchTerm">
             </md-input-container>
             <md-button class="btn btn-secondary btn-round" ng-click="searchReview()">Search</md-button>
         </div>
@@ -43,7 +43,7 @@
             <div style="column-count: 3; column-gap:40px; column-rule: 1px solid lightgrey">
                 {{recomendedReview.content}}
             </div>
-            <a ng-href="https://twitter.com/intent/tweet?screen_name=ReviewInMyHeart&text=Check out this cool review for {{review.title}} ! {{review.content}}"
+            <a ng-href="https://twitter.com/intent/tweet?screen_name=ReviewInMyHeart&text=Check out this cool review for {{recomendedReview.title}} ! {{recomendedReview.content}}"
                 class="twitter-mention-button" data-show-count="false">Tweet to ReviewInMyHeart</a>
             <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
         </md-card-content>
