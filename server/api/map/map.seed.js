@@ -1,8 +1,8 @@
 export default {
     seed() {
         return [{
-            latitude: 31.608595,
-            longtitude: 34.773058
+            latitude: 31.7767189,
+            longtitude: 35.2366972
         }];
     }
 };
