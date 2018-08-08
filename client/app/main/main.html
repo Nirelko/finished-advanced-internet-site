@@ -18,13 +18,13 @@
             <h3>Search users:</h3>
             <md-input-container>
                 <label>Filter</label>
-                <md-select ng-model="userFilterBy">
+                <md-select ng-model="userSearch.userFilterBy">
                     <md-option ng-value="">None</md-option>
                     <md-option ng-repeat="filter in userFilterTypes" ng-value="filter">{{filter}}</md-option>
                 </md-select>
             </md-input-container>
             <md-input-container>
-                <input placeholder="Search Term" type="text" ng-model="userSearchTerm">
+                <input placeholder="Search Term" type="text" ng-model="userSearch.userSearchTerm">
             </md-input-container>
             <md-button class="btn btn-green btn-round" ng-click="searchUser()">Search</md-button>
         </div>

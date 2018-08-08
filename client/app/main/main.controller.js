@@ -83,7 +83,7 @@ angular.module('advanced.controllers').controller(CONTROLLER, ($scope, Review, U
 
     const filter = $scope.userSearch.userFilterBy;
     let term = $scope.userSearch.userSearchTerm;
-
+    console.error($scope.userSearch);
     if (!filter) {
       term = '';
     }
